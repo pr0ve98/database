@@ -1,4 +1,4 @@
-package t3_CRUD;
+package t4_CRUD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,6 +19,8 @@ public class HoewonDAO2 {
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); // 드라이버 찾기
 			String url = "jdbc:mysql://localhost:3306/javaclass";
+//			String url = "jdbc:mysql://127.0.0.1:3306/javaclass";
+//			String url = "jdbc:mysql://192.168.50.66:3306/javaclass";
 			String user ="atom", password = "1234";
 			conn = DriverManager.getConnection(url, user, password); // Connection: 연결하는 객체
 			// 필드에 url, user, password 넣어 컨넥션 객체 생성
@@ -100,7 +102,7 @@ public class HoewonDAO2 {
 		}
 		return vo;
 	}
-	
+	/*
 	// 회원 자료 수정
 	public void setUpdate(int idx, int choice, String content) {
 		try {
@@ -123,7 +125,7 @@ public class HoewonDAO2 {
 		} finally {
 			stmtClose();
 		}
-	}
+	}*/
 
 	// 회원 삭제 처리
 	public void setDelete(String name) {
@@ -149,5 +151,20 @@ public class HoewonDAO2 {
 		} finally {
 			stmtClose();
 		}
+	}
+
+	// 회원 정보 수정
+	public int setUpdate(HoewonVO vo) {
+		int res = 0;
+		try {
+			stmt= conn.createStatement();
+			sql = "Update hoewon set name='"+vo.getName()+"', age="+vo.getAge()+", gender='"+vo.getGender()+"', address='"+vo.getAddress()+"' where idx="+vo.getIdx();
+			res = stmt.executeUpdate(sql); // SELECT 가 아닐 때는 모두 executeUpdate
+		} catch (SQLException e) {
+			System.out.println("SQL 오류: "+e.getMessage());
+		} finally {
+			stmtClose();
+		}
+		return res;
 	}
 }
