@@ -7,12 +7,16 @@ CREATE TABLE salary (
 );
 
 DROP TABLE salary;
+DELETE FROM salary;
 DESC salary;
 
 INSERT INTO salary VALUES ('부장', 5000000);
 INSERT INTO salary VALUES ('과장', 4000000);
 INSERT INTO salary VALUES ('대리', 3000000);
 INSERT INTO salary VALUES ('사원', 2000000);
+
+Update salary set bonbong=2000000 where jikkub='사원';
+
 SELECT * FROM salary;
 
 -- 인사관리 테이블
@@ -43,4 +47,7 @@ SELECT * FROM insa;
 SELECT * FROM salary WHERE jikkub = '사원';
 -- 이기자의 본봉?
 SELECT * FROM salary s, insa i WHERE s.jikkub = i.jikkub;
-SELECT i.name, i.jikkub,s.bonbong FROM salary s, insa i WHERE s.jikkub = i.jikkub;
+SELECT i.name, i.jikkub,s.bonbong FROM salary s, insa i;
+SELECT i.idx, i.sabun, i.buseo, i.name, i.jikkub, i.age, i.ipsail, i.gender, i.address, s.bonbong FROM salary s,insa i WHERE s.jikkub = i.jikkub ORDER BY name
+SELECT i.name, i.jikkub, s.bonbong AS netpay FROM salary s, insa i WHERE s.jikkub = i.jikkub;
+SELECT i.idx, i.sabun, i.buseo, i.name, i.jikkub, i.age, i.ipsail, i.gender, i.address, s.bonbong FROM salary s,insa i WHERE s.jikkub = i.jikkub AND name='유재석' ORDER BY name

@@ -98,7 +98,7 @@ public class SungjukService {
 		boolean run = true;
 		
 		while(run) {
-			System.out.print("수정 항목 선택(1.성명, 2.국어, 3.수학, 4.영어, 0.종료 ==> ");
+			System.out.print("수정 항목 선택(1.성명, 2.국어, 3.영어, 4.수학, 0.종료 ==> ");
 			choice = sc.nextInt();
 			System.out.print("수정할 내용을 입력하세요.> ");
 			

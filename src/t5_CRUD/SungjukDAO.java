@@ -134,7 +134,7 @@ public class SungjukDAO {
 			pstmt.setInt(3, vo.getEng());
 			pstmt.setInt(4, vo.getMat());
 			pstmt.setInt(5, vo.getIdx());
-			pstmt.executeUpdate();
+			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("SQL 오류"+e.getMessage());
 		} finally {
